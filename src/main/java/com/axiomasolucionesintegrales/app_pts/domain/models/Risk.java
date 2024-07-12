@@ -25,6 +25,6 @@ public class Risk {
     private String evaluation;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "work_permit_id")
     WorkPermit workPermit;
 }

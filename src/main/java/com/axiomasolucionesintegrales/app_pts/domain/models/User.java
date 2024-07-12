@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -39,7 +41,11 @@ public class User {
     private Role role;
 
     @ManyToOne
+    @JoinColumn(name = "company_id")
     private Company company;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AuditLog> auditLogs;
 
 
 }

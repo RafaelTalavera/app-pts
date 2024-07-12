@@ -25,4 +25,8 @@ public class SafetyReview {
     private String reviewer;
 
     private String observations;
+
+    @ManyToOne
+    @JoinColumn(name = "work_permit_id")
+    private WorkPermit workPermit;
 }

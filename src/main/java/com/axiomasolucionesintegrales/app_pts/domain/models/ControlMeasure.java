@@ -23,4 +23,8 @@ public class ControlMeasure {
 
     @NotEmpty
     private String requiredPPE;
+
+    @ManyToOne
+    @JoinColumn(name = "work_permit_id")
+    private WorkPermit workPermit;
 }

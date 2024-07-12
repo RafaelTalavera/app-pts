@@ -24,4 +24,7 @@ public class EmergencyPlan {
     private String rescueEquipment;
 
     private String contact;
+
+    @OneToOne(mappedBy = "emergencyPlan")
+    private WorkPermit workPermit;
 }

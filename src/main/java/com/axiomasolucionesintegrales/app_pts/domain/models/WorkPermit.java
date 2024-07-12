@@ -16,10 +16,12 @@ import java.util.List;
 @Table(name= "workers_permits")
 @Entity
 public class WorkPermit {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "company_id")
     private Company company;
 
     private String permitNumber;
@@ -34,33 +36,45 @@ public class WorkPermit {
 
     private String gpsLocation;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "work_permit_id")
     private List<ToolsAndEquipment> toolsAndEquipment;
 
     @ManyToMany
+    @JoinTable(
+            name = "work_permit_workers",
+            joinColumns = @JoinColumn(name = "work_permit_id"),
+            inverseJoinColumns = @JoinColumn(name = "worker_id")
+    )
     private List<User> workers;
 
     @ManyToMany
+    @JoinTable(
+            name = "work_permit_supervisors",
+            joinColumns = @JoinColumn(name = "work_permit_id"),
+            inverseJoinColumns = @JoinColumn(name = "supervisor_id")
+    )
     private List<User> supervisors;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "workPermit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Risk> risks;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "workPermit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ControlMeasure> controlMeasures;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "emergency_plan_id", referencedColumnName = "id")
     private EmergencyPlan emergencyPlan;
 
-    @OneToMany
+    @OneToMany(mappedBy = "workPermit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SafetyReview> safetyReviews;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "closure_id", referencedColumnName = "id")
     private WorkPermitClosure closure;
 
-    @OneToMany
+    @OneToMany(mappedBy = "workPermit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AuditLog> auditLogs;
 
     // Métodos Getters y Setters
 }
-

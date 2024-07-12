@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name= "works_Permits_Closure")
+@Table(name= "works_permits_closure")
 @Entity
 public class WorkPermitClosure {
     @Id
