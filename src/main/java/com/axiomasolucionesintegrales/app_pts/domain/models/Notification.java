@@ -1,17 +1,11 @@
 package com.axiomasolucionesintegrales.app_pts.domain.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Table(name= "notifications")
 @Entity
 public class Notification {
@@ -21,4 +15,46 @@ public class Notification {
     private String message;
     private String recipientEmail;
     private LocalDateTime sentAt;
+
+    public Notification() {
+    }
+
+    public Notification(Long id, String message, String recipientEmail, LocalDateTime sentAt) {
+        this.id = id;
+        this.message = message;
+        this.recipientEmail = recipientEmail;
+        this.sentAt = sentAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getRecipientEmail() {
+        return recipientEmail;
+    }
+
+    public void setRecipientEmail(String recipientEmail) {
+        this.recipientEmail = recipientEmail;
+    }
+
+    public LocalDateTime getSentAt() {
+        return sentAt;
+    }
+
+    public void setSentAt(LocalDateTime sentAt) {
+        this.sentAt = sentAt;
+    }
 }

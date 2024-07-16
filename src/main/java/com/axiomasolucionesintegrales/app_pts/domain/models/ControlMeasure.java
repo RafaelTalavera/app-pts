@@ -2,15 +2,8 @@ package com.axiomasolucionesintegrales.app_pts.domain.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Table(name= "control_measure")
 @Entity
 public class ControlMeasure {
@@ -27,4 +20,46 @@ public class ControlMeasure {
     @ManyToOne
     @JoinColumn(name = "work_permit_id")
     private WorkPermit workPermit;
+
+    public ControlMeasure() {
+    }
+
+    public ControlMeasure(Long id, String prevention, String requiredPPE, WorkPermit workPermit) {
+        this.id = id;
+        this.prevention = prevention;
+        this.requiredPPE = requiredPPE;
+        this.workPermit = workPermit;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPrevention() {
+        return prevention;
+    }
+
+    public void setPrevention(String prevention) {
+        this.prevention = prevention;
+    }
+
+    public String getRequiredPPE() {
+        return requiredPPE;
+    }
+
+    public void setRequiredPPE(String requiredPPE) {
+        this.requiredPPE = requiredPPE;
+    }
+
+    public WorkPermit getWorkPermit() {
+        return workPermit;
+    }
+
+    public void setWorkPermit(WorkPermit workPermit) {
+        this.workPermit = workPermit;
+    }
 }

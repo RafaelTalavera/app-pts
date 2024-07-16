@@ -2,15 +2,8 @@ package com.axiomasolucionesintegrales.app_pts.domain.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Table(name= "emergencys_plans")
 @Entity
 public class EmergencyPlan {
@@ -27,4 +20,55 @@ public class EmergencyPlan {
 
     @OneToOne(mappedBy = "emergencyPlan")
     private WorkPermit workPermit;
+
+    public EmergencyPlan() {
+    }
+
+    public EmergencyPlan(Long id, String planDescription, String rescueEquipment, String contact, WorkPermit workPermit) {
+        this.id = id;
+        this.planDescription = planDescription;
+        this.rescueEquipment = rescueEquipment;
+        this.contact = contact;
+        this.workPermit = workPermit;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPlanDescription() {
+        return planDescription;
+    }
+
+    public void setPlanDescription(String planDescription) {
+        this.planDescription = planDescription;
+    }
+
+    public String getRescueEquipment() {
+        return rescueEquipment;
+    }
+
+    public void setRescueEquipment(String rescueEquipment) {
+        this.rescueEquipment = rescueEquipment;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public WorkPermit getWorkPermit() {
+        return workPermit;
+    }
+
+    public void setWorkPermit(WorkPermit workPermit) {
+        this.workPermit = workPermit;
+    }
 }

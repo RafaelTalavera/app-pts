@@ -2,17 +2,10 @@ package com.axiomasolucionesintegrales.app_pts.domain.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name= "works_permits_closure")
 @Entity
 public class WorkPermitClosure {
@@ -26,4 +19,46 @@ public class WorkPermitClosure {
     private String conditionVerification;
 
     private String closureSignature;
+
+    public WorkPermitClosure() {
+    }
+
+    public WorkPermitClosure(Long id, LocalDateTime completionDate, String conditionVerification, String closureSignature) {
+        this.id = id;
+        this.completionDate = completionDate;
+        this.conditionVerification = conditionVerification;
+        this.closureSignature = closureSignature;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getCompletionDate() {
+        return completionDate;
+    }
+
+    public void setCompletionDate(LocalDateTime completionDate) {
+        this.completionDate = completionDate;
+    }
+
+    public String getConditionVerification() {
+        return conditionVerification;
+    }
+
+    public void setConditionVerification(String conditionVerification) {
+        this.conditionVerification = conditionVerification;
+    }
+
+    public String getClosureSignature() {
+        return closureSignature;
+    }
+
+    public void setClosureSignature(String closureSignature) {
+        this.closureSignature = closureSignature;
+    }
 }

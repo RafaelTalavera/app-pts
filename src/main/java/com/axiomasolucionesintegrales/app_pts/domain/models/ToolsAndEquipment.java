@@ -1,15 +1,8 @@
 package com.axiomasolucionesintegrales.app_pts.domain.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Table(name= "tools_equipment")
 @Entity
 public class ToolsAndEquipment {
@@ -20,4 +13,37 @@ public class ToolsAndEquipment {
     private String name;
 
     private String type;
+
+    public ToolsAndEquipment() {
+    }
+
+    public ToolsAndEquipment(Long id, String name, String type) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
